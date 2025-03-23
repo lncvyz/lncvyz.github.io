@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
+body {
+  padding: 20px;
+}
+
+.mainbody {
+  background-color: black;
+  color: white;
+  font-family: 'Quicksand';
+
+}
+
+.topnav {
+  overflow: hidden;
+}
+
+
+
+.topnav a {
+  background-color: #000000;
+  border-radius: 15px;
+  float: left;
+  color: #ffffff;
+  text-align: center;
+  padding: 16px 18px;
+  text-decoration: none;
+  font-size: 19px;
+  margin-right: 5px;
+  font-family: 'Quicksand'
+}
+
+
+.topnav a:hover {
+  background-color: grey;
+}
+
+
+.topnav .active {
+  background-color: #808080;
+  color: white;
+}
+
+
+/*EZRA PAGE*/
+
+.padding {
+  margin: 10px;
+  margin-left: 60px;
+  margin-right: 60px;
+  }
+
+.filter{
+  font-family: "Quicksand";
+  }
+.reverb{
+  font-family: "Beau Rivage";
+  }
+.delay{
+  font-family: "Nova Square";
+  }
+.distortion{
+  font-family: "Syne Mono";
+  }
+.compression{
+  font-family: "Six Caps";
+  }
+.chorus{
+  font-family: "Vast Shadow";
+  }
+.flanger{
+  font-family: "Big Shoulders Inline Text";
+  }
+.phaser{
+  font-family: "Nova Mono";
+  }
+.images {
+  margin: 40px;
+  }
+.pictures {
+  width: 400px;
+  height: auto;
+  border: 5px solid #eca846;
+  border-radius: 10%;
+}
+.title {
+  margin-top: 30px;
+  padding: 2px 10px;
+  }
+.texts {
+  margin: 20px;
+  }
+.ezrabutton {
+  font-size: 35px;
+  padding: 20px 25px;
+  border-radius: 25px;
+  border: solid #eca846;
+  background: #ece246;
+  color: black;
+  margin-top: 30px;
+  top: 50%;
+  left: 50%;
+  cursor: pointer;
+  }
+.ezrabutton:hover {
+  font-size: 37px;
+  }
+.ezrabody {
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-family: 'Quicksand';
+  }
+.ezralist {
+  text-align: center;
+  list-style-position: inside;
+  }
+.ezrali {
+  margin-bottom: 20px;
+  }
+.funheading{
+  font-family: 'Nabla';
+  font-size: 50px;
+  text-align: center;
+    }
+.divider {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  height: 20px;
+  background-color: #eca846;
+  border-color: #eca846;
+  border-radius: 50%;
+  }
