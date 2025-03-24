@@ -12,13 +12,11 @@ a:visited {
 
 a:hover {
     color:cadetblue;
-    background-color:black;
     text-decoration: underline;
 }
 
 a:active {
     color:cadetblue;
-    background-color:black;
     text-decoration: underline;
 }
 
