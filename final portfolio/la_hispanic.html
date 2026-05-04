@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>LA by Hispanic Population</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.14.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.14.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      h2,
+      h3 {
+        margin: 10px;
+        font-size: 18px;
+      }
+
+      h3 {
+        font-size: 16px;
+      }
+
+      p {
+        margin: 10px;
+      }
+
+      .map-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: #fff;
+        font-family: Arial, sans-serif;
+        overflow: auto;
+        border-radius: 3px;
+        height: 300px;
+        width: 150px;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+
+      #features {
+        top: 0;
+        height: 100px;
+        margin-top: 20px;
+        width: 250px;
+      }
+
+      #legend {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 10px;
+        box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+        line-height: 18px;
+        height: fit-content;
+      }
+
+      .legend-key {
+        display: inline-block;
+        border-radius: 20%;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div class="map-overlay" id="features">
+      <h2>LA by Hispanic Population</h2>
+      <div id="pd"><p>Click an area for more information.</p></div>
+      <p>This map extends to all of California; however, I've kept the zoom level close to encourage you to fully digest the distribution of colors in one area (greater LA), rather than have lots of indistinguishable tiny areas.</p>
+      <p>Data via <a href = "https://catalog.data.gov/dataset/low-income-or-disadvantaged-communities-designated-by-california-d9c14">Low-Income or Disadvantaged Communities Designated by California</a>.</p>
+    </div>
+    <div class="map-overlay" id="legend"></div>
+
+    <script>
+      // define access token
+      mapboxgl.accessToken = 'pk.eyJ1IjoibGdhbmMiLCJhIjoiY21ubmI0anNqMGl0dzJzb25rZGZqd3B2cSJ9.TQirmwpXOLMIFG_OZrrbAA';
+      // mapboxgl.accessToken = 'pk.eyJ1IjoibGdhbmMiLCJhIjoiY21ubmJzbnZyMXFxbzJ5cGtrb2traDhxaCJ9.B6aXruyuTJBd14O1gW3YIg';
+
+      // create map
+      const map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/lganc/cmnnm1old00ab01p14pfb8q5e' // map style URL from Mapbox Studio
+      });
+
+      // wait for map to load before adjusting it
+      map.on('load', () => {
+        // make a pointer cursor
+        map.getCanvas().style.cursor = 'default';
+
+        // set map bounds to the continental US
+        map.fitBounds([
+          [-118.542587, 34.391663],
+          [-117.867836, 33.745571]
+        ]);
+
+        // define layer names
+        const layers = [
+          '0%',
+          '0-12.5%',
+          '12.5%-25%',
+          '25%-37.5%',
+          '37.5%-50%',
+          '50%-62.5%',
+          '62.5%-75%',
+          '75%-100%',
+        ];
+        const colors = [
+          '#FFEDA0',
+          '#FED976',
+          '#FEB24C',
+          '#FD8D3C',
+          '#FC4E2A',
+          '#E31A1C',
+          '#BD0026',
+          '#800026'
+        ];
+
+        // create legend
+        const legend = document.getElementById('legend');
+
+        // title
+        const title = document.createElement('h3');
+        title.textContent = 'Percentage Hispanic Population';
+        legend.appendChild(title);
+
+        // legend labels and colors
+        const labels = ['0',
+          '0-12.5',
+          '12.5-25',
+          '25-37.5',
+          '37.5-50',
+          '50-62.5',
+          '62.5-75',
+          '75-100',];
+
+        labels.forEach((label, i) => {
+          const item = document.createElement('div');
+          const key = document.createElement('span');
+          key.className = 'legend-key';
+          key.style.backgroundColor = colors[i];
+
+          const value = document.createElement('span');
+          value.textContent = label;
+
+          item.appendChild(key);
+          item.appendChild(value);
+          legend.appendChild(item);
+        });
+
+        map.on('click', 'lowincome', (e) => {
+          const props = e.features[0].properties;
+          new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(`${props.NAMELSAD} is ${Number(props.Hispanic).toFixed(1)}% Hispanic`)
+            .addTo(map);
+        });
+      });
+    </script>
+  </body>
+</html>
