@@ -34,11 +34,11 @@
         bottom: 0;
         left: 0;
         background: #fff;
-        font-family: Arial, sans-serif;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         overflow: auto;
         border-radius: 3px;
-        height: 300px;
         width: 150px;
+        height:fit-content;
       }
 
       #map {
@@ -50,19 +50,20 @@
 
       #features {
         top: 0;
-        height: 100px;
+        height: fit-content;
         margin-top: 20px;
         width: 250px;
       }
 
       #legend {
         position: absolute;
-        bottom: 0;
+        top: 290px;
         left: 0;
         padding: 10px;
         box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
         line-height: 18px;
         height: fit-content;
+        width: 270px;
       }
 
       .legend-key {
@@ -78,9 +79,9 @@
     <div id="map"></div>
     <div class="map-overlay" id="features">
       <h2>LA by Hispanic Population</h2>
-      <div id="pd"><p>Click an area for more information.</p></div>
-      <p>This map extends to all of California; however, I've kept the zoom level close to encourage you to fully digest the distribution of colors in one area (greater LA), rather than have lots of indistinguishable tiny areas.</p>
-      <p>Data via <a href = "https://catalog.data.gov/dataset/low-income-or-disadvantaged-communities-designated-by-california-d9c14">Low-Income or Disadvantaged Communities Designated by California</a>.</p>
+      <p>This map begins in the Los Angeles area, but extends to all of California.</p>
+      <p>Click a census tract for more information, or click and drag to see other areas.</p>
+      <p>Data: <a href = "https://catalog.data.gov/dataset/low-income-or-disadvantaged-communities-designated-by-california-d9c14">Low-Income or Disadvantaged Communities Designated by California</a>.</p>
     </div>
     <div class="map-overlay" id="legend"></div>
 
